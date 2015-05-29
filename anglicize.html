@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <input id="in" type="number">
+    <button onclick="anglicizeInput()">Anglicize!</button>
+    <div id="out"></div>
+    <script type="text/javascript" >
+        function anglicize(num){
+    var singles = ["","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+    
+    var decades = ["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+    
+    if(num>=0 && num<20){return singles[num];}
+    else if(num>=20 && num<100){return decades[Math.floor(num/10)]+" "+anglicize(num%10);}
+    else{return anglicize(Math.floor(num/100))+" hundred "+anglicize(num%100);}
+};
+
+function anglicizeInput(){
+    var input = document.getElementById("in").value;
+    document.getElementById("out").innerHTML=anglicize(input);
+};
+</script>
+</body>
+</html>
